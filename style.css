@@ -1,0 +1,495 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 爱心容器 - 全屏且层级最高 */
+#heart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 不影响页面交互 */
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* 爱心样式 */
+.heart {
+    position: absolute;
+    background: #ff6b8b;
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+    opacity: 0.8;
+    animation: heartFall ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 107, 139, 0.5));
+}
+
+/* 爱心飘落动画 - 轻盈曲线+轻微晃动 */
+@keyframes heartFall {
+    0% {
+        transform: translateY(-10px) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) scale(1.1);
+        opacity: 0;
+    }
+}
+
+/* 页面主体样式 - 鲜花渐变背景 */
+body {
+    background: linear-gradient(135deg, #fdf2f8, #fef7fb, #fcf1f7);
+    background-image: url('https://picsum.photos/seed/flower-bg/1920/1080');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 导航栏 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 9998;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #d63384;
+}
+
+.logo i {
+    color: #ff6b8b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #ff6b8b;
+    transform: translateY(-2px);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: #333;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ff6b8b;
+    transform: scale(1.1);
+}
+
+/* 英雄区 */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+    text-align: center;
+    min-height: 80vh;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    margin: 2rem 0;
+    border-radius: 20px;
+    margin: 2rem 5%;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #d63384, #ff6b8b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: #ff6b8b;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+}
+
+.btn:hover {
+    background: #d63384;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(214, 51, 132, 0.4);
+}
+
+/* 关于我板块 */
+.about-section {
+    padding: 5rem 5%;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 2rem 5%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, #d63384, #ff6b8b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.about-avatar {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-avatar img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ff6b8b;
+    box-shadow: 0 0 30px rgba(255, 107, 139, 0.2);
+}
+
+.about-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-content h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.about-content h4 {
+    font-size: 1.2rem;
+    color: #ff6b8b;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.about-desc {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.about-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff6b8b;
+}
+
+.stat-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.about-motto {
+    font-size: 1.2rem;
+    color: #444;
+    font-style: italic;
+    padding: 1rem 2rem;
+    border-left: 3px solid #ff6b8b;
+    background: #fdf2f8;
+    margin-top: 1rem;
+}
+
+/* 博客内容区（原播客区） */
+.podcast-section {
+    padding: 5rem 5%;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 2rem 5%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.podcast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.podcast-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #fef7fb;
+}
+
+.podcast-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.podcast-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.podcast-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.podcast-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.podcast-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff6b8b;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* 联系我板块 */
+.contact-section {
+    padding: 5rem 5%;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 2rem 5%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #fef7fb;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255, 107, 139, 0.15);
+    border-color: #ff6b8b;
+}
+
+.contact-icon {
+    width: 80px;
+    height: 80px;
+    background: #fdf2f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.contact-icon i {
+    font-size: 2.5rem;
+    color: #ff6b8b;
+}
+
+.contact-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.contact-value {
+    font-size: 1.1rem;
+    color: #ff6b8b;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.contact-tips {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.contact-note {
+    font-size: 1.1rem;
+    color: #555;
+    padding: 1.5rem;
+    background: #fdf2f8;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-note i {
+    color: #ff6b8b;
+    margin-right: 0.5rem;
+}
+
+/* 页脚 */
+footer {
+    background: #fdf2f8;
+    padding: 3rem 5%;
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 1px solid #fef7fb;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin-top: 1rem;
+    color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .podcast-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-container {
+        gap: 2rem;
+    }
+
+    .about-avatar img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 适配板块顺序后的响应式间距 */
+    .hero, .about-section, .podcast-section, .contact-section {
+        margin: 1rem 2%;
+        padding: 3rem 2%;
+    }
+}
